@@ -1,0 +1,239 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ==========================================================
+   Theme Variables
+========================================================== */
+
+@theme {
+  --color-primary: #6366f1;
+  --color-secondary: #8b5cf6;
+  --color-accent: #06b6d4;
+
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-border: #e2e8f0;
+
+  --color-dark: #020617;
+  --color-dark-surface: #0f172a;
+  --color-dark-border: #1e293b;
+
+  --font-sans: "Inter", sans-serif;
+  --font-heading: "Poppins", sans-serif;
+}
+
+/* ==========================================================
+   Base
+========================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #fcfcfd;
+
+  font-family: var(--font-sans);
+
+  @apply bg-slate-100;
+
+  @apply text-slate-900;
+
+  @apply antialiased;
+
+  @apply transition-colors duration-300;
+}
+
+.dark body {
+  @apply bg-slate-950;
+
+  @apply text-slate-700 dark:text-slate-400;
+}
+
+/* Global */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease,
+    color 250ms ease;
+}
+
+/* Text Selection */
+
+::selection {
+  @apply bg-violet-500 text-slate-900 dark:text-white;
+}
+
+/* Links */
+
+a {
+  @apply no-underline transition-colors duration-300;
+}
+
+/* Buttons */
+
+button {
+  @apply cursor-pointer;
+}
+
+/* Images */
+
+img {
+  @apply block max-w-full;
+}
+
+/* Root */
+
+#root {
+  min-height: 100vh;
+
+  position: relative;
+}
+
+/* ==========================================================
+   Page Background
+========================================================== */
+
+body::before {
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(99, 102, 241, 0.08),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(139, 92, 246, 0.06),
+      transparent 30%
+    ),
+    radial-gradient(circle at bottom, rgba(6, 182, 212, 0.05), transparent 35%);
+
+  z-index: -1;
+}
+
+.dark body::before {
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(99, 102, 241, 0.15),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(139, 92, 246, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(circle at bottom, rgba(6, 182, 212, 0.1), transparent 35%);
+}
+
+/* ==========================================================
+   Headings
+========================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+
+  @apply font-bold;
+
+  @apply text-slate-900;
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  @apply text-slate-500 dark:text-slate-400;
+}
+
+/* ==========================================================
+   Scrollbar
+========================================================== */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-100;
+}
+
+.dark ::-webkit-scrollbar-track {
+  @apply bg-slate-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-slate-400;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-violet-500;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-slate-700;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  @apply bg-violet-500;
+}
+
+body {
+  background-color: #fcfcfd;
+
+  font-family: var(--font-sans);
+
+  @apply bg-slate-100;
+
+  @apply text-slate-900;
+
+  @apply antialiased;
+
+  @apply transition-colors duration-300;
+}
+
+.dark .text-slate-900 dark:text-white {
+  color: white !important;
+}
+
+html:not(.dark) .text-slate-900 dark:text-white {
+  color: #0f172a !important;
+}
+
+.dark .text-slate-700 dark:text-slate-300 {
+  color: rgb(203 213 225) !important;
+}
+
+html:not(.dark) .text-slate-700 dark:text-slate-300 {
+  color: rgb(51 65 85) !important;
+}
+
+.dark .text-slate-600 dark:text-slate-400 {
+  color: rgb(148 163 184) !important;
+}
+
+html:not(.dark) .text-slate-600 dark:text-slate-400 {
+  color: rgb(71 85 105) !important;
+}
